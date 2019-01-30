@@ -37,4 +37,4 @@ p my_house
 # property_2.save
 # p property_1
 
-# property_1.delete()
+property_1.delete()

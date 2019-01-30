@@ -1,5 +1,5 @@
 require('pg')
-
+require('pry')
 
 class Property
 
@@ -52,6 +52,7 @@ attr_accessor :address, :value, :bedroom_number, :year, :status, :size, :type, :
     values = [@id]
     db.prepare("delete", sql)
     db.exec_prepared("delete", values)
+    # binding.pry
     db.close()
   end
 
@@ -69,7 +70,9 @@ attr_accessor :address, :value, :bedroom_number, :year, :status, :size, :type, :
       WHERE id = $8"
       values = [@address, @value, @bedroom_number, @year, @status, @size, @type, @id]
       db.prepare("update", sql)
-      db.exec_prepared("update", values)
+      ret = db.exec_prepared("update", values)
+      # p ret
+      # binding.pry
       db.close()
   end
 
